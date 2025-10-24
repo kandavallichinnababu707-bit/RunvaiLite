@@ -3,71 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Runvai Resume Builder</title>
+<title>Runvai — Futuristic Resume Builder</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .hero-bg { background: linear-gradient(135deg,#7f00ff,#e100ff); }
+  .template-card:hover { transform: scale(1.05); transition: 0.3s; }
+</style>
 </head>
 <body class="bg-gray-100">
 
-<div class="max-w-7xl mx-auto p-5 flex flex-col md:flex-row gap-5">
+<!-- Hero Section -->
+<section class="hero-bg text-white py-20">
+  <div class="max-w-7xl mx-auto text-center px-5">
+    <h1 class="text-5xl font-bold mb-5">Build Your Perfect Resume in Minutes</h1>
+    <p class="text-xl mb-8">Runvai AI-powered Resume Builder — Futuristic, Professional, and Mobile-Ready</p>
+    <a href="#builder" class="bg-white text-purple-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-gray-100 transition">Start Building</a>
+  </div>
+</section>
 
-  <!-- Sidebar Form -->
-  <div class="w-full md:w-1/2 bg-white p-5 rounded shadow">
-    <h1 class="text-3xl font-bold mb-5">Runvai Resume Builder</h1>
-    <label class="block mb-2">Select Template:</label>
-    <select id="templateSelect" class="w-full p-2 border rounded mb-5">
-      <option value="template1">Template 1</option>
-      <option value="template2">Template 2</option>
-      <option value="template3">Template 3</option>
-    </select>
-
-    <div id="formSteps">
-      <!-- Step 1: Personal Info -->
-      <div class="step mb-4">
-        <h2 class="text-xl font-semibold mb-2">Step 1: Personal Info</h2>
-        <input type="text" placeholder="Full Name" id="name" class="w-full p-2 border rounded mb-2">
-        <input type="text" placeholder="Email" id="email" class="w-full p-2 border rounded mb-2">
-        <input type="text" placeholder="Phone" id="phone" class="w-full p-2 border rounded">
-      </div>
-
-      <!-- Step 2: Education -->
-      <div class="step mb-4">
-        <h2 class="text-xl font-semibold mb-2">Step 2: Education</h2>
-        <textarea id="education" placeholder="Education Details" class="w-full p-2 border rounded"></textarea>
-      </div>
-
-      <!-- Step 3: Experience -->
-      <div class="step mb-4">
-        <h2 class="text-xl font-semibold mb-2">Step 3: Experience</h2>
-        <textarea id="experience" placeholder="Experience Details" class="w-full p-2 border rounded"></textarea>
-      </div>
-
-      <!-- Step 4: Skills -->
-      <div class="step mb-4">
-        <h2 class="text-xl font-semibold mb-2">Step 4: Skills</h2>
-        <textarea id="skills" placeholder="Skills" class="w-full p-2 border rounded"></textarea>
-      </div>
-
-      <!-- Step 5: Projects -->
-      <div class="step mb-4">
-        <h2 class="text-xl font-semibold mb-2">Step 5: Projects</h2>
-        <textarea id="projects" placeholder="Projects" class="w-full p-2 border rounded"></textarea>
-      </div>
-
-      <!-- Step 6: Generate -->
-      <button onclick="generateResume()" class="bg-blue-600 text-white px-4 py-2 rounded mt-2 w-full">Generate Resume</button>
+<!-- Templates Section -->
+<section class="max-w-7xl mx-auto py-16 px-5">
+  <h2 class="text-3xl font-bold text-center mb-10">Choose Your Template</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="template-card bg-white p-5 rounded-lg shadow hover:shadow-xl cursor-pointer">
+      <img src="assets/template1.png" alt="Template 1" class="w-full rounded mb-3">
+      <h3 class="text-xl font-semibold text-center">Modern Minimal</h3>
+    </div>
+    <div class="template-card bg-white p-5 rounded-lg shadow hover:shadow-xl cursor-pointer">
+      <img src="assets/template2.png" alt="Template 2" class="w-full rounded mb-3">
+      <h3 class="text-xl font-semibold text-center">Professional Clean</h3>
+    </div>
+    <div class="template-card bg-white p-5 rounded-lg shadow hover:shadow-xl cursor-pointer">
+      <img src="assets/template3.png" alt="Template 3" class="w-full rounded mb-3">
+      <h3 class="text-xl font-semibold text-center">Creative Gradient</h3>
     </div>
   </div>
+</section>
 
-  <!-- Resume Preview -->
-  <div id="resumePreview" class="w-full md:w-1/2 bg-white p-5 rounded shadow hidden">
-    <div id="templateContainer"></div>
-    <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 rounded mt-3 w-full">Download PDF</button>
+<!-- Features Section -->
+<section class="max-w-7xl mx-auto py-16 px-5">
+  <h2 class="text-3xl font-bold text-center mb-10">Why Choose Runvai?</h2>
+  <div class="grid md:grid-cols-4 gap-6 text-center">
+    <div class="bg-white p-5 rounded-lg shadow hover:shadow-xl transition">
+      <img src="assets/icon1.svg" class="mx-auto mb-3 w-12" alt="AI Suggestions">
+      <h3 class="font-semibold mb-2">AI Suggestions</h3>
+      <p class="text-gray-600">Get optimized phrasing for every section of your resume.</p>
+    </div>
+    <div class="bg-white p-5 rounded-lg shadow hover:shadow-xl transition">
+      <img src="assets/icon2.svg" class="mx-auto mb-3 w-12" alt="Multiple Templates">
+      <h3 class="font-semibold mb-2">Multiple Templates</h3>
+      <p class="text-gray-600">Choose from professional, modern, and creative templates.</p>
+    </div>
+    <div class="bg-white p-5 rounded-lg shadow hover:shadow-xl transition">
+      <img src="assets/icon3.svg" class="mx-auto mb-3 w-12" alt="PDF Download">
+      <h3 class="font-semibold mb-2">PDF Download</h3>
+      <p class="text-gray-600">Download your resume in high-quality PDF format instantly.</p>
+    </div>
+    <div class="bg-white p-5 rounded-lg shadow hover:shadow-xl transition">
+      <img src="assets/icon4.svg" class="mx-auto mb-3 w-12" alt="Mobile Friendly">
+      <h3 class="font-semibold mb-2">Mobile Friendly</h3>
+      <p class="text-gray-600">Build and preview your resume on any device.</p>
+    </div>
   </div>
+</section>
 
-</div>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8 mt-10">
+  <div class="max-w-7xl mx-auto text-center px-5">
+    <p>&copy; 2025 Runvai. All rights reserved.</p>
+  </div>
+</footer>
 
-<script src="script.js"></script>
 </body>
 </html>

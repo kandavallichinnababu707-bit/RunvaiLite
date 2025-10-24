@@ -3,44 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Runvai — Free Resume Builder</title>
+<title>Runvai Resume Builder</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100">
 
-<div class="max-w-5xl mx-auto p-5">
-  <h1 class="text-3xl font-bold text-center mb-5">Runvai Resume Builder</h1>
+<div class="max-w-7xl mx-auto p-5 flex flex-col md:flex-row gap-5">
 
-  <!-- Template Selection -->
-  <div class="bg-white p-5 rounded shadow mb-5">
-    <h2 class="text-xl font-semibold mb-3">Select Template</h2>
-    <select id="templateSelect" class="w-full p-2 border rounded">
+  <!-- Sidebar Form -->
+  <div class="w-full md:w-1/2 bg-white p-5 rounded shadow">
+    <h1 class="text-3xl font-bold mb-5">Runvai Resume Builder</h1>
+    <label class="block mb-2">Select Template:</label>
+    <select id="templateSelect" class="w-full p-2 border rounded mb-5">
       <option value="template1">Template 1</option>
       <option value="template2">Template 2</option>
       <option value="template3">Template 3</option>
     </select>
-  </div>
 
-  <!-- Form -->
-  <div class="bg-white p-5 rounded shadow mb-5">
-    <h2 class="text-xl font-semibold mb-3">Fill Your Details</h2>
-    <form id="resumeForm" class="space-y-3">
-      <input type="text" placeholder="Full Name" id="name" class="w-full p-2 border rounded">
-      <input type="text" placeholder="Email" id="email" class="w-full p-2 border rounded">
-      <input type="text" placeholder="Phone" id="phone" class="w-full p-2 border rounded">
-      <textarea placeholder="Education" id="education" class="w-full p-2 border rounded"></textarea>
-      <textarea placeholder="Experience" id="experience" class="w-full p-2 border rounded"></textarea>
-      <textarea placeholder="Skills" id="skills" class="w-full p-2 border rounded"></textarea>
-      <button type="button" onclick="generateResume()" class="bg-blue-600 text-white px-4 py-2 rounded">Generate Resume</button>
-    </form>
+    <div id="formSteps">
+      <!-- Step 1: Personal Info -->
+      <div class="step mb-4">
+        <h2 class="text-xl font-semibold mb-2">Step 1: Personal Info</h2>
+        <input type="text" placeholder="Full Name" id="name" class="w-full p-2 border rounded mb-2">
+        <input type="text" placeholder="Email" id="email" class="w-full p-2 border rounded mb-2">
+        <input type="text" placeholder="Phone" id="phone" class="w-full p-2 border rounded">
+      </div>
+
+      <!-- Step 2: Education -->
+      <div class="step mb-4">
+        <h2 class="text-xl font-semibold mb-2">Step 2: Education</h2>
+        <textarea id="education" placeholder="Education Details" class="w-full p-2 border rounded"></textarea>
+      </div>
+
+      <!-- Step 3: Experience -->
+      <div class="step mb-4">
+        <h2 class="text-xl font-semibold mb-2">Step 3: Experience</h2>
+        <textarea id="experience" placeholder="Experience Details" class="w-full p-2 border rounded"></textarea>
+      </div>
+
+      <!-- Step 4: Skills -->
+      <div class="step mb-4">
+        <h2 class="text-xl font-semibold mb-2">Step 4: Skills</h2>
+        <textarea id="skills" placeholder="Skills" class="w-full p-2 border rounded"></textarea>
+      </div>
+
+      <!-- Step 5: Projects -->
+      <div class="step mb-4">
+        <h2 class="text-xl font-semibold mb-2">Step 5: Projects</h2>
+        <textarea id="projects" placeholder="Projects" class="w-full p-2 border rounded"></textarea>
+      </div>
+
+      <!-- Step 6: Generate -->
+      <button onclick="generateResume()" class="bg-blue-600 text-white px-4 py-2 rounded mt-2 w-full">Generate Resume</button>
+    </div>
   </div>
 
   <!-- Resume Preview -->
-  <div id="resumePreview" class="bg-white p-5 rounded shadow hidden">
+  <div id="resumePreview" class="w-full md:w-1/2 bg-white p-5 rounded shadow hidden">
     <div id="templateContainer"></div>
-    <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 rounded mt-3">Download PDF</button>
+    <button onclick="downloadPDF()" class="bg-green-600 text-white px-4 py-2 rounded mt-3 w-full">Download PDF</button>
   </div>
+
 </div>
 
 <script src="script.js"></script>
